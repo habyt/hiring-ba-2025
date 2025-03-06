@@ -30,6 +30,45 @@ pip install -r requirements.txt
    - Invoices
    - InvoiceLineItems
 
+### About SQLite and Database Access
+
+The provided database is a SQLite database, which is a self-contained, serverless, zero-configuration database engine. SQLite stores the entire database (including tables, indices, and data) in a single file on disk, making it perfect for embedded applications and prototypes.
+
+You can access the database in several ways:
+
+1. **SQLite Command Line Tool**:
+   ```bash
+   sqlite3 analyst_test_data.db
+   ```
+   Once in the SQLite shell, you can run SQL queries directly.
+
+2. **DB Browser for SQLite**: 
+   - A free, open-source visual tool
+   - Download from https://sqlitebrowser.org/
+   - Provides a GUI to browse and query the database
+
+3. **Python Libraries**:
+   - Using `sqlite3` (built-in):
+     ```python
+     import sqlite3
+     conn = sqlite3.connect('analyst_test_data.db')
+     ```
+   - Using `sqlalchemy`:
+     ```python
+     from sqlalchemy import create_engine
+     engine = create_engine('sqlite:///analyst_test_data.db')
+     ```
+   - Using `pandas`:
+     ```python
+     import pandas as pd
+     df = pd.read_sql_query("SELECT * FROM Customers", 'sqlite:///analyst_test_data.db')
+     ```
+
+4. **VS Code Extensions**:
+   - "SQLite" by `mtxr`
+   - "SQLite Viewer" by `qwtel`
+   Both provide integrated database viewing and querying capabilities within VS Code.
+
 ## Task Description
 
 Your task is to analyze the provided data and deliver insights about our contracts, invoices, and payment patterns. Please complete the following deliverables:
